@@ -1,93 +1,50 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/d_L6NR7B)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19249853&assignment_repo_type=AssignmentRepo)
-# YMT5270 - Yenilikçi Makine Öğrenme Ortamları
-## Ara Sınav Projesi
+# YMT5270 - Ara Sınav Projesi: Öğrenci Performans Verisi
 
-### Genel Bakış
+## Proje Tanımı
+Bu proje, YMT5270 - Yenilikçi Makine Öğrenme Ortamları dersi kapsamında, öğrencilerin sınavlardaki performanslarını tahmin etmek için **Orange Data Mining** platformu kullanılarak yapılan bir sınıflandırma problemidir. Projede, **"Students Performance in Exams"** adlı Kaggle veri seti kullanılmıştır. Bu veri seti, öğrencilerin sınav performanslarını etkileyebilecek faktörleri içermektedir ve sınıflandırma analizi yapılmaktadır.
 
-Bu ödev, YMT5270 - Yenilikçi Makine Öğrenme Ortamları dersi kapsamında verilen ara sınav projesidir. Bu projede, kod yazmadan görsel programlama aracı olan [Orange Data Mining](https://orangedatamining.com/) platformunu kullanarak veri analizi ve makine öğrenmesi uygulamaları geliştirmeniz beklenmektedir.
+## Veri Seti
+- **Veri Seti Adı**: Students Performance in Exams
+- **Kaynak**: [Kaggle - Students Performance in Exams](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)
+- **Lisans**: Kaggle veri setinin lisans koşullarına tabidir.
+- **Veri Seti Özellikleri**:
+    - 5 özellik (özellikler: gender, race/ethnicity, parental level of education, lunch, test preparation course).
+    - Hedef değişken: exam scores (sınav sonuçları).
+    - 100 örnek içermektedir.
 
-### Proje Hedefleri
+## Keşifsel Veri Analizi (EDA)
+Projede keşifsel veri analizi (EDA) adımlarında aşağıdaki işlemler gerçekleştirilmiştir:
+- Veri setinin temel istatistikleri hesaplanmıştır.
+- Eksik veriler kontrol edilip, herhangi bir eksiklik bulunmamıştır.
+- Aykırı değerler tespit edilmiştir ve uygun görselleştirmeler yapılmıştır (örneğin, histogramlar, kutu grafikleri).
+- Öznitelikler arasındaki ilişkiler görselleştirilmiştir (scatter plots, box plots).
 
-Bu projenin ana hedefleri:
+## Makine Öğrenmesi Modeli
+Proje kapsamında, sınıflandırma problemine yönelik **Logistic Regression** modeli kullanılmıştır. Modelin eğitimi için aşağıdaki adımlar takip edilmiştir:
+- Veri, eğitim ve test setlerine bölünmüştür (%70 eğitim, %30 test).
+- **Logistic Regression** modeli, eğitim verisi üzerinde eğitilmiştir.
+- Modelin başarımı **Test & Score** widget'ı kullanılarak değerlendirilmiştir.
 
-1. Orange Data Mining platformunu etkili bir şekilde kullanabilme becerisi kazanmak
-2. Keşifsel Veri Analizi (EDA) tekniklerini uygulamak
-3. Seçilen veri setine uygun makine öğrenmesi yöntemlerini uygulamak
-4. Veri görselleştirme ve sonuçları yorumlama becerilerini geliştirmek
+### Model Performansı
+Modelin doğruluğu ve performansı aşağıdaki metriklerle değerlendirilmiştir:
+- **Accuracy**: Modelin doğruluk oranı.
+- **F1-Score**: Dengesiz sınıflandırmalarda performans.
+- **Precision** ve **Recall**: Modelin pozitif sınıflandırmalarını değerlendiren metrikler.
 
-### Gereksinimler
+## Kullanılan Araçlar
+- **Orange Data Mining**: Görsel programlama platformu, veri analizi ve makine öğrenmesi için kullanıldı.
+- **Python**: Veri ön işleme ve analiz işlemleri için kullanıldı.
+- **Matplotlib** ve **Seaborn**: Veri görselleştirme için kullanıldı.
 
-Projeyi tamamlamak için aşağıdaki gereksinimleri yerine getirmeniz gerekmektedir:
+## Proje Yapısı
+- **orange_project.ows**: Orange iş akışı dosyası.
+- **Students Performance in Exams.csv**: Veri setinin CSV formatındaki dosyası.
+- **ReadMe_YourProject.md**: Proje açıklama dosyası.
 
-1. **Veri Seti Seçimi**: 
-   - [Kaggle](https://www.kaggle.com/datasets), [UCI Machine Learning Repository](https://archive.ics.uci.edu/), [Google Dataset Search](https://datasetsearch.research.google.com/) gibi kaynaklardan bir veri seti seçilmelidir.
-   - Veri seti tercihen en az 5 öznitelik ve 100 örnek içermelidir.
-   - Veri setinin kaynağı ve lisans bilgileri belirtilmelidir.
+## Proje Teslimi
+Bu proje, YMT5270 ara sınav projesi kapsamında tamamlanmıştır. Proje, GitHub üzerinden teslim edilecektir.
 
-2. **Keşifsel Veri Analizi (EDA)**:
-   - Veri seti içeriğinin tanımlanması
-   - Temel istatistiklerin hesaplanması
-   - Eksik verilerin tespit edilmesi ve işlenmesi
-   - Aykırı değerlerin belirlenmesi
-   - Öznitelikler arasındaki ilişkilerin incelenmesi
-   - Uygun görselleştirmelerin yapılması (histogramlar, kutu grafikleri, dağılım grafikleri vb.)
+## Yazar
+- **Ad**: [Ömer Faruk KONCA]
+- **Email**: [omerkonca01@gmail.com]
 
-3. **Makine Öğrenmesi Uygulaması**:
-   - Veri setinize uygun olarak aşağıdakilerden **BİRİNİ** seçip uygulayınız:
-     - **Sınıflandırma**: Hedef değişkeni kategorik ise
-     - **Regresyon**: Hedef değişkeni sayısal ise
-     - **Kümeleme**: Gözetimsiz öğrenme yaklaşımı kullanmak istiyorsanız
-
-4. **Değerlendirme ve Yorumlama**:
-   - Kullanılan modellerin performansının değerlendirilmesi
-   - Sonuçların yorumlanması ve önerilerin sunulması
-
-### Teslim Edilecek Dosyalar
-
-1. Doldurulmuş `ReadMe_YourProject.md` dosyası (şablonu bu repoda bulabilirsiniz)
-2. Orange proje dosyanız (.ows uzantılı)
-3. Kullandığınız veri seti veya veri setinin erişim bağlantısı
-
-### Orange Data Mining Kurulumu ve Kullanımı
-
-1. Orange Data Mining platformunu [resmi web sitesinden](https://orangedatamining.com/download/) indirip kurabilirsiniz.
-2. Temel kullanım için [Orange Video Eğitimleri](https://www.youtube.com/c/OrangeDataMining) izlenebilir.
-3. Ayrıca [Orange Dokümantasyonu](https://orangedatamining.com/docs/) detaylı bilgi için faydalı olacaktır.
-
-### Örnek İş Akışı
-
-Aşağıda basit bir örnek iş akışı gösterilmiştir:
-
-![Örnek Orange İş Akışı](img/example_workflow.png)
-
-Repodaki `example` klasöründe örnek bir Orange iş akışı dosyası bulabilirsiniz. 
-- Lütfen kendi proje iş akışı dosyanızı `project` klasörüne yükleyiniz. 
-
-### Değerlendirme Kriterleri
-
-| Kriter | Ağırlık |
-|--------|---------|
-| Veri seti seçimi ve tanımlama | %15 |
-| Keşifsel veri analizi (EDA) kalitesi | %25 |
-| Makine öğrenmesi uygulaması | %30 |
-| Sonuçların yorumlanması | %20 |
-| Dokümantasyon ve rapor kalitesi | %10 |
-
-### Önemli Tarihler
-
-- **Proje Duyurusu**: 20 Nisan 2025
-- **Teslim Tarihi**: 15 Mayıs 2025, 23:59
-
-### Akademik Dürüstlük ve Etik Beyanı
-
-Bu ödev bireysel bir çalışmadır. Başkalarının çalışmalarını kendinizinmiş gibi sunmak akademik etik kurallarına aykırıdır. 
-Yararlandığınız tüm kaynakları uygun şekilde belirtmeniz gerekmektedir.
-
-### İletişim
-
-Sorularınız için: fucar@firat.edu.tr
-
----
-
-**Not**: Bu repo, GitHub Classroom üzerinden assignment ile oluşturulmuştur. Projenizi tamamladıktan sonra GitHub Classroom assignment submit edilmelidir.
