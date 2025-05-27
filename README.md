@@ -1,91 +1,105 @@
-# YMT5270 - Yenilikçi Makine Öğrenme Ortamları
-## Ara Sınav Projesi
+# YMT5270 Ara Sınav Projesi: Orange ile Veri Analizi ve Makine Öğrenmesi
 
-### Genel Bakış
+## Öğrenci Bilgileri
+- **Ad Soyad**: Ömer Faruk Konca
+- **Öğrenci Numarası**: 241137129
+- **E-posta**: omerkonca01@gmail.com
 
-Bu ödev, YMT5270 - Yenilikçi Makine Öğrenme Ortamları dersi kapsamında verilen ara sınav projesidir. Bu projede, kod yazmadan görsel programlama aracı olan [Orange Data Mining](https://orangedatamining.com/) platformunu kullanarak veri analizi ve makine öğrenmesi uygulamaları geliştirmeniz beklenmektedir.
+## Proje Özeti
+Bu projede, öğrencilerin sınav başarılarını etkileyen faktörleri analiz etmek ve başarı durumlarını sınıflandırmak amacıyla "Students Performance in Exams" veri seti kullanılmıştır. Orange Data Mining platformu ile görsel programlama ortamında Keşifsel Veri Analizi (EDA) gerçekleştirilmiş ve ardından sınıflandırma problemleri için makine öğrenmesi modelleri uygulanmıştır. Projede Logistic Regression, Random Forest ve Naive Bayes algoritmaları karşılaştırılmış ve en iyi performansı Random Forest modeli göstermiştir. Proje, hem EDA teknikleri hem de makine öğrenmesi modelleme süreçlerini içeren kapsamlı bir çalışma sunmaktadır.
 
-### Proje Hedefleri
+## Veri Seti
+### Veri Seti Bilgileri
+- **Veri Seti Adı**: Students Performance in Exams
+- **Kaynak**: [Kaggle - spscientist](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)
+- **Lisans**: CC0: Public Domain
+- **Veri Seti Boyutu**: 1000 satır, 8 sütun
 
-Bu projenin ana hedefleri:
+### Veri Seti Tanımı
+Veri seti, öğrencilerin cinsiyeti, ebeveyn eğitim düzeyi, öğle yemeği türü ve sınavlara hazırlık kursuna katılıp katılmadığı gibi demografik bilgilerle birlikte matematik, okuma ve yazma notlarını içermektedir. Bu öznitelikler ile öğrencilerin genel akademik başarıları arasındaki ilişkiler incelenmiştir.
 
-1. Orange Data Mining platformunu etkili bir şekilde kullanabilme becerisi kazanmak
-2. Keşifsel Veri Analizi (EDA) tekniklerini uygulamak
-3. Seçilen veri setine uygun makine öğrenmesi yöntemlerini uygulamak
-4. Veri görselleştirme ve sonuçları yorumlama becerilerini geliştirmek
+### Öznitelik Açıklamaları
+| Öznitelik Adı | Veri Tipi | Açıklama | Örnek Değer |
+|---------------|-----------|----------|-------------|
+| gender | Kategorik | Öğrencinin cinsiyeti | "female" |
+| race/ethnicity | Kategorik | Öğrencinin etnik grubu | "group B" |
+| parental level of education | Kategorik | Ebeveynin eğitim seviyesi | "bachelor's degree" |
+| lunch | Kategorik | Öğle yemeği türü | "standard" |
+| test preparation course | Kategorik | Test hazırlık kursuna katılım | "completed" |
+| math score | Sayısal | Matematik sınav puanı | 66 |
+| reading score | Sayısal | Okuma sınav puanı | 70 |
+| writing score | Sayısal | Yazma sınav puanı | 74 |
 
-### Gereksinimler
+## Keşifsel Veri Analizi (Explanatory Data Analysis - EDA)
+### Temel İstatistikler
+- Öğrencilerin ortalama matematik puanı: 66.09
+- Ortalama okuma puanı: 69.17
+- Ortalama yazma puanı: 68.05
+- Cinsiyet, öğle yemeği türü ve kurs katılımı gibi kategorik değişkenlerde dengesizlikler gözlemlendi.
 
-Projeyi tamamlamak için aşağıdaki gereksinimleri yerine getirmeniz gerekmektedir:
+### Veri Ön İşleme
+- Eksik veri bulunmamaktadır.
+- Aykırı değerler Box Plot yardımıyla incelenmiştir.
+- Kategorik değişkenler Orange tarafından otomatik olarak dönüştürülmüştür.
+- Math score sınıflandırma için “Geçti” (>=50) ve “Kaldı” (<50) olarak etiketlenmiştir (Select Columns → Feature Constructor kullanıldı).
 
-1. **Veri Seti Seçimi**: 
-   - [Kaggle](https://www.kaggle.com/datasets), [UCI Machine Learning Repository](https://archive.ics.uci.edu/), [Google Dataset Search](https://datasetsearch.research.google.com/) gibi kaynaklardan bir veri seti seçilmelidir.
-   - Veri seti tercihen en az 5 öznitelik ve 100 örnek içermelidir.
-   - Veri setinin kaynağı ve lisans bilgileri belirtilmelidir.
+### Görselleştirmeler
 
-2. **Keşifsel Veri Analizi (EDA)**:
-   - Veri seti içeriğinin tanımlanması
-   - Temel istatistiklerin hesaplanması
-   - Eksik verilerin tespit edilmesi ve işlenmesi
-   - Aykırı değerlerin belirlenmesi
-   - Öznitelikler arasındaki ilişkilerin incelenmesi
-   - Uygun görselleştirmelerin yapılması (histogramlar, kutu grafikleri, dağılım grafikleri vb.)
+#### Görselleştirme 1: Box Plot – Lunch Türüne Göre Math Score
+![Box Plot](goruntuler/lunch_boxplot.png)
+> Test hazırlık kursuna katılan öğrencilerde puan ortalamalarının daha yüksek olduğu gözlemlenmiştir.
 
-3. **Makine Öğrenmesi Uygulaması**:
-   - Veri setinize uygun olarak aşağıdakilerden **BİRİNİ** seçip uygulayınız:
-     - **Sınıflandırma**: Hedef değişkeni kategorik ise
-     - **Regresyon**: Hedef değişkeni sayısal ise
-     - **Kümeleme**: Gözetimsiz öğrenme yaklaşımı kullanmak istiyorsanız
+#### Görselleştirme 2: Scatter Plot – Reading vs Writing
+![Scatter Plot](goruntuler/reading_writing_scatter.png)
+> Okuma ve yazma puanları arasında güçlü bir pozitif korelasyon olduğu görülmüştür.
 
-4. **Değerlendirme ve Yorumlama**:
-   - Kullanılan modellerin performansının değerlendirilmesi
-   - Sonuçların yorumlanması ve önerilerin sunulması
+### Öznitelik İlişkileri
+Scatter plot ve correlation widget'ları ile güçlü korelasyonlar tespit edilmiştir:
+- Reading ↔ Writing: 0.87
+- Math ↔ Reading: 0.64
 
-### Teslim Edilecek Dosyalar
+## Makine Öğrenmesi Uygulaması
+### Kullanılan Yöntem
+Sınıflandırma yöntemi kullanılmıştır. Hedef değişken olarak math score'un sınıflandırılmış versiyonu ("Pass"/"Fail") seçilmiştir.
 
-1. Doldurulmuş `ReadMe_YourProject.md` dosyası (şablonu bu repoda bulabilirsiniz)
-2. Orange proje dosyanız (.ows uzantılı)
-3. Kullandığınız veri seti veya veri setinin erişim bağlantısı
+### Modeller ve Parametreler
+- **Logistic Regression** (varsayılan ayarlar)
+- **Random Forest** (Trees=10)
+- **Naive Bayes** (varsayılan)
 
-### Orange Data Mining Kurulumu ve Kullanımı
+### Model Değerlendirmesi
 
-1. Orange Data Mining platformunu [resmi web sitesinden](https://orangedatamining.com/download/) indirip kurabilirsiniz.
-2. Temel kullanım için [Orange Video Eğitimleri](https://www.youtube.com/c/OrangeDataMining) izlenebilir.
-3. Ayrıca [Orange Dokümantasyonu](https://orangedatamining.com/docs/) detaylı bilgi için faydalı olacaktır.
+#### Metrikler
+| Model | Accuracy | Precision | Recall | F1-Score |
+|-------|----------|-----------|--------|----------|
+| Logistic Regression | 0.83 | 0.84 | 0.81 | 0.825 |
+| Random Forest | **0.87** | 0.88 | 0.85 | **0.865** |
+| Naive Bayes | 0.79 | 0.80 | 0.78 | 0.79 |
 
-### Örnek İş Akışı
+### Sonuçların Yorumlanması
+Random Forest modeli, diğer iki modele göre daha yüksek doğruluk ve F1-skoru göstermiştir. Bu durum, veri setinde kategorik ve sayısal verilerin birlikte etkili işlendiğini göstermektedir. Logistic Regression da tatmin edici sonuçlar vermiştir. Daha fazla model (k-NN, SVM) denenerek performans iyileştirilebilir.
 
-Aşağıda basit bir örnek iş akışı gösterilmiştir:
+## Orange İş Akışı
+![Orange İş Akışı](goruntuler/orange_workflow.png)
 
-![Örnek Orange İş Akışı](img/example_workflow.png)
+İş akışı şu adımları içermektedir:
+- Veri okuma
+- Sütun seçimi ve dönüştürme
+- Görselleştirme (box plot, scatter)
+- Modelleme (3 farklı sınıflandırıcı)
+- Performans karşılaştırması
 
-Repodaki `example` klasöründe örnek bir Orange iş akışı dosyası bulabilirsiniz. 
-- Lütfen kendi proje iş akışı dosyanızı `project` klasörüne yükleyiniz. 
+## Sonuç ve Öneriler
+Proje sonucunda demografik verilerin sınav başarıları üzerinde etkili olduğu görülmüştür. Özellikle test hazırlık kursunun başarıya katkısı dikkat çekicidir. Gelecekte daha büyük ve farklı veri setleri ile bu analizler genişletilebilir. Ayrıca diğer makine öğrenmesi algoritmaları ile karşılaştırma yapılabilir.
 
-### Değerlendirme Kriterleri
+## Kaynaklar
+1. https://www.kaggle.com/datasets/spscientist/students-performance-in-exams  
+2. https://orangedatamining.com  
+3. Orange Docs & Tutorials  
 
-| Kriter | Ağırlık |
-|--------|---------|
-| Veri seti seçimi ve tanımlama | %15 |
-| Keşifsel veri analizi (EDA) kalitesi | %25 |
-| Makine öğrenmesi uygulaması | %30 |
-| Sonuçların yorumlanması | %20 |
-| Dokümantasyon ve rapor kalitesi | %10 |
+## Ekler
+### Orange Proje Dosyası
+> [students-performance.ows](project/students-performance.ows)
 
-### Önemli Tarihler
-
-- **Proje Duyurusu**: 20 Nisan 2025
-- **Teslim Tarihi**: 15 Mayıs 2025, 23:59
-
-### Akademik Dürüstlük ve Etik Beyanı
-
-Bu ödev bireysel bir çalışmadır. Başkalarının çalışmalarını kendinizinmiş gibi sunmak akademik etik kurallarına aykırıdır. 
-Yararlandığınız tüm kaynakları uygun şekilde belirtmeniz gerekmektedir.
-
-### İletişim
-
-Sorularınız için: fucar@firat.edu.tr
-
----
-
-**Not**: Bu repo, GitHub Classroom üzerinden assignment ile oluşturulmuştur. Projenizi tamamladıktan sonra GitHub Classroom assignment submit edilmelidir.
+### Veri Seti Dosyası veya Bağlantısı
+> [StudentsPerformance.csv](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)
